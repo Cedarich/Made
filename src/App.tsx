@@ -89,17 +89,16 @@ const BlogContent = memo(() => {
   const { isReading } = useReadingState();
   
   return (
-    <div className="flex flex-col xl:flex-row gap-6 mb-8 w-full">
-      <div className={`${isReading ? "w-full" : "xl:w-[65%] w-full"}`}>
+    <div className="flex flex-col lg:flex-row gap-6 w-full">
+      {/* Left Column (65%) - Blog Posts */}
+      <div className="lg:w-[65%] w-full">
         <BlogPosts />
       </div>
-      {isReading ? (
-        <BlogSidebar />
-      ) : (
-        <div className="xl:w-[35%] w-full">
-          <MemoryGame />
-        </div>
-      )}
+
+      {/* Right Column (35%) - Memory Game */}
+      <div className="lg:w-[35%] w-full">
+        {isReading ? <BlogSidebar /> : <MemoryGame />}
+      </div>
     </div>
   );
 });
